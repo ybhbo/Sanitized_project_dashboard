@@ -1,0 +1,45 @@
+// =========================================================
+// * robot React Dashboard
+// =========================================================
+
+// * Product Page: https://themesberg.com/product/dashboard/robot-react
+// * Copyright 2021 Themesberg (https://www.themesberg.com)
+// * Official Repository: https://github.com/themesberg/robot-react-dashboard
+// * License: MIT License (https://themesberg.com/licensing)
+
+// * Designed and coded by https://themesberg.com
+
+// =========================================================
+
+// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800&display=swap');
+
+// Bootstrap mixins and functions
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Change variables here
+@import "robot/variables";
+
+// Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Vendor
+@import "robot/vendor";
+
+// robot mixins & functions
+@import "robot/mixins";
+@import "robot/functions";
+
+// Utilities
+@import "robot/reboot";
+@import "robot/utilities";
+
+// Layout
+@import "robot/layout";
+
+// Components
+@import "robot/components";
+
+// write your custom styles here!
