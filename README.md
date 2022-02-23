@@ -3,10 +3,12 @@
 2.Make sure you have Yarn installed. 
 
 3.After installing yarn, open a terminal and run yarn install in the main volt folder to download all project dependencies. 
-/*yarn install 
+
+`yarn install`
 
 4.Then start the app in development mode by running the following command in terminal: 
-/*yarn start
+
+`yarn start`
 
 5.Open http://localhost:3000/robot dashboard to view it in the browser. Any changes you make to the code will be automatically reflected in the browser.
 
