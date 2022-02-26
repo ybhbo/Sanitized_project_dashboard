@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCashRegister, faChartLine, faCloudUploadAlt, faPlus, faRocket, faTasks, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Button, Dropdown, ButtonGroup } from '@themesberg/react-bootstrap';
@@ -7,40 +7,40 @@ import { Col, Row, Button, Dropdown, ButtonGroup } from '@themesberg/react-boots
 import { CounterWidget, CircleChartWidget, BarChartWidget, TeamMembersWidget, ProgressTrackWidget, WorkHoursWidget, SalesValueWidgetPhone, AcquisitionWidget } from "../../components/Widgets";
 import { SanitizedRecordTable } from "../../components/Tables";
 import { trafficShares, totalOrders } from "../../data/charts";
+import { faDesktop, faMobileAlt, faTabletAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default () => {
+
+  // const Dashboard = () => {
+  //   const [battery, setBattery] = useState();
+  //   const [refreshInterval, setRefreshInterval] = useState(refreshInUrl || 0);
+  //   const fetchMetrics = () => {
+  //     // retrieve and then setData()
+  //   }
+
+  //   useEffect(() => {
+  //     if (refreshInterval && refreshInterval > 0) {
+  //       const interval = setInterval(fetchMetrics, refreshInterval);
+  //       return () => clearInterval(interval);
+  //     }
+  //   }, [refreshInterval]);
+
+
+  let [battery, setBattery] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:8080/battery")
+      .then((res) => res.json())
+      .then(batteryPercentage => {
+        let batteryLevel = [
+          { id: 1, label: "Avaliable", value: batteryPercentage, color: "secondary", icon: faDesktop },
+          { id: 2, label: "Used", value: 100 - batteryPercentage, color: "tertiary", icon: faTabletAlt }
+        ];
+        setBattery(batteryLevel)
+      })
+  }, [])
+
   return (
     <>
-      {/* <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-        <Dropdown className="btn-toolbar">
-          <Dropdown.Toggle as={Button} variant="primary" size="sm" className="me-2">
-            <FontAwesomeIcon icon={faPlus} className="me-2" />New Task
-          </Dropdown.Toggle>
-          <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
-            <Dropdown.Item className="fw-bold">
-              <FontAwesomeIcon icon={faTasks} className="me-2" /> New Task
-            </Dropdown.Item>
-            <Dropdown.Item className="fw-bold">
-              <FontAwesomeIcon icon={faCloudUploadAlt} className="me-2" /> Upload Files
-            </Dropdown.Item>
-            <Dropdown.Item className="fw-bold">
-              <FontAwesomeIcon icon={faUserShield} className="me-2" /> Preview Security
-            </Dropdown.Item>
-
-            <Dropdown.Divider />
-
-            <Dropdown.Item className="fw-bold">
-              <FontAwesomeIcon icon={faRocket} className="text-danger me-2" /> Upgrade to Pro
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-
-        <ButtonGroup>
-          <Button variant="outline-primary" size="sm">Share</Button>
-          <Button variant="outline-primary" size="sm">Export</Button>
-        </ButtonGroup>
-      </div> */}
-
       <Row className="justify-content-md-center">
         <Col xs={12} className="mb-4 d-none d-sm-block">
           <WorkHoursWidget
@@ -81,7 +81,7 @@ export default () => {
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CircleChartWidget
             title="Battery Level"
-            data={trafficShares} />
+            data={battery} />
         </Col>
       </Row>
 

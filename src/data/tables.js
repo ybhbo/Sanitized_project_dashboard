@@ -10,12 +10,12 @@ import JapanFlag from '../assets/img/flags/japan.svg';
 import ItalyFlag from '../assets/img/flags/italy.svg';
 
 
-const sanitizedRecords = [
-    { id: 1, date: "02/12/2022", time: "9:00-9:30", sanitizedHours: "3", location: "Eng187" },
-    { id: 2, date: "02/12/2022", time: "13:00-13:30", sanitizedHours: 2, location: "Eng187" },
-    { id: 3, date: "02/13/2022", time: "8:00-8:30", sanitizedHours: 2, location: "Eng201" },
-    { id: 4, date: "02/14/2022", time: "18:00-18:20", sanitizedHours: 1, location: "Eng337" },
-];
+// const sanitizedRecords = [
+//     { id: 1, date: "02/12/2022", time: "9:00-9:30", sanitizedHours: "3", location: "Eng187" },
+//     { id: 2, date: "02/12/2022", time: "13:00-13:30", sanitizedHours: 2, location: "Eng187" },
+//     { id: 3, date: "02/13/2022", time: "8:00-8:30", sanitizedHours: 2, location: "Eng201" },
+//     { id: 4, date: "02/14/2022", time: "18:00-18:20", sanitizedHours: 1, location: "Eng337" },
+// ];
 
 // const pageTraffic = [
 //     { id: 1, source: "Direct", sourceType: "Direct", trafficShare: 51, change: 2.45, sourceIcon: faGlobeEurope, sourceIconColor: "gray" },
@@ -42,7 +42,7 @@ const invoiceItems = [
 ];
 
 export {
-    sanitizedRecords,
+    // sanitizedRecords,
     // pageTraffic,
     // pageRanking,
     invoiceItems,
