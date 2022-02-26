@@ -6,7 +6,7 @@ import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 export const WorkHoursChart = () => {
   const data = {
     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    series: [[1, 2, 2, 3, 3, 4, 3]]
+    series: [[0, 0, 0, 3, 3, 4, 3]]
   };
 
   const options = {

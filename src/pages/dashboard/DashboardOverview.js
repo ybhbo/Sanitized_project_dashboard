@@ -11,23 +11,12 @@ import { faDesktop, faMobileAlt, faTabletAlt } from '@fortawesome/free-solid-svg
 
 export default () => {
 
-  // const Dashboard = () => {
-  //   const [battery, setBattery] = useState();
-  //   const [refreshInterval, setRefreshInterval] = useState(refreshInUrl || 0);
-  //   const fetchMetrics = () => {
-  //     // retrieve and then setData()
-  //   }
-
-  //   useEffect(() => {
-  //     if (refreshInterval && refreshInterval > 0) {
-  //       const interval = setInterval(fetchMetrics, refreshInterval);
-  //       return () => clearInterval(interval);
-  //     }
-  //   }, [refreshInterval]);
-
-
+  const [refreshInterval, setRefreshInterval] = useState(10);
   let [battery, setBattery] = useState([])
-  useEffect(() => {
+  let [todayWorkload, setTodayWorkload] = useState([])
+  let [monthWorkload, setMonthWorkload] = useState([])
+
+  const fetchData = () => {
     fetch("http://localhost:8080/battery")
       .then((res) => res.json())
       .then(batteryPercentage => {
@@ -37,7 +26,22 @@ export default () => {
         ];
         setBattery(batteryLevel)
       })
-  }, [])
+
+    fetch("http://localhost:8080/today/workload")
+      .then((res) => res.json())
+      .then(data => setTodayWorkload(data + " Hours"))
+
+    fetch("http://localhost:8080/month/workload")
+      .then((res) => res.json())
+      .then(data => setMonthWorkload(data + " Hours"))
+  }
+
+  useEffect(() => {
+    if (refreshInterval && refreshInterval > 0) {
+      const interval = setInterval(fetchData, refreshInterval);
+      return () => clearInterval(interval);
+    }
+  }, [refreshInterval]);
 
   return (
     <>
@@ -59,7 +63,7 @@ export default () => {
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CounterWidget
             category="Total Sanitized"
-            title="100 Hours"
+            title={monthWorkload}
             period="Feb 1 -Feb 22"
             percentage={18}
             icon={faChartLine}
@@ -70,7 +74,7 @@ export default () => {
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CounterWidget
             category="Today Workload"
-            title="5 Hours"
+            title={todayWorkload}
             period="Feb 22,6:00am-11:00am"
             time={30}
             icon={faCashRegister}

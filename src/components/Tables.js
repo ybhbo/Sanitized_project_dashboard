@@ -29,8 +29,6 @@ const ValueChange = ({ value, suffix }) => {
 export const SanitizedRecordTable = () => {
   const TableRow = (props) => {
     const { location, date, time, sanitizedHours } = props;
-    // const bounceIcon = SanitizedHours < 0 ? faArrowDown : faArrowUp;
-    // const bounceTxtColor = SanitizedHours < 0 ? "text-danger" : "text-success";
 
     return (
       <tr>
@@ -38,29 +36,26 @@ export const SanitizedRecordTable = () => {
         <td>{date}</td>
         <td>{time}</td>
         <td>{sanitizedHours}</td>
-        {/* <td>
-          <FontAwesomeIcon icon={bounceIcon} className={`${bounceTxtColor} me-3`} />
-          {Math.abs(SanitizedHours)}%
-        </td> */}
       </tr>
     );
   };
 
 
-  /*
-     { id: 1, date: "02/12/2022", time: "9:00-9:30", sanitizedHours: "3", location: "Eng187" },
-    { id: 2, date: "02/12/2022", time: "13:00-13:30", sanitizedHours: 2, location: "Eng187" },
-    { id: 3, date: "02/13/2022", time: "8:00-8:30", sanitizedHours: 2, location: "Eng201" },
-    { id: 4, date: "02/14/2022", time: "18:00-18:20", sanitizedHours: 1, location: "Eng337" },
-];
-  */
+  const [refreshInterval, setRefreshInterval] = useState(10);
   let [records, setRecords] = useState([])
-  useEffect(() => {
+
+  const fetchRecords = () => {
     fetch("http://localhost:8080/report")
       .then((res) => res.json())
       .then(data => { setRecords(data) })
-  }, [])
+  }
 
+  useEffect(() => {
+    if (refreshInterval && refreshInterval > 0) {
+      const interval = setInterval(fetchRecords, refreshInterval);
+      return () => clearInterval(interval);
+    }
+  }, [refreshInterval]);
 
   return (
     <Card border="light" className="shadow-sm">
