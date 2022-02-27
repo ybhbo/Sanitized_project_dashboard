@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCashRegister, faChartLine, faCloudUploadAlt, faPlus, faRocket, faTasks, faUserShield } from '@fortawesome/free-solid-svg-icons';
+import { faCashRegister, faChartLine, faCloudUploadAlt, faDigitalTachograph, faPlus, faRocket, faTasks, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Button, Dropdown, ButtonGroup } from '@themesberg/react-bootstrap';
 
 import { CounterWidget, CircleChartWidget, BarChartWidget, TeamMembersWidget, ProgressTrackWidget, WorkHoursWidget, SalesValueWidgetPhone, AcquisitionWidget } from "../../components/Widgets";
@@ -11,10 +11,11 @@ import { faDesktop, faMobileAlt, faTabletAlt } from '@fortawesome/free-solid-svg
 
 export default () => {
 
-  const [refreshInterval, setRefreshInterval] = useState(10);
+  const [refreshInterval, setRefreshInterval] = useState(30 * 1000);
   let [battery, setBattery] = useState([])
   let [todayWorkload, setTodayWorkload] = useState([])
   let [monthWorkload, setMonthWorkload] = useState([])
+  let [weekWorkload, setWeekWorkload] = useState([])
 
   const fetchData = () => {
     fetch("http://localhost:8080/battery")
@@ -26,21 +27,36 @@ export default () => {
         ];
         setBattery(batteryLevel)
       })
+      .catch((error) => {
+        console.log(error)
+      });
 
     fetch("http://localhost:8080/today/workload")
       .then((res) => res.json())
       .then(data => setTodayWorkload(data + " Hours"))
+      .catch((error) => {
+        console.log(error)
+      });
 
     fetch("http://localhost:8080/month/workload")
       .then((res) => res.json())
       .then(data => setMonthWorkload(data + " Hours"))
+      .catch((error) => {
+        console.log(error)
+      });
+
+    fetch("http://localhost:8080/week/workload")
+      .then((res) => res.json())
+      .then(data => setWeekWorkload(data))
+      .catch((error) => {
+        console.log(error)
+      });
   }
 
   useEffect(() => {
-    if (refreshInterval && refreshInterval > 0) {
-      const interval = setInterval(fetchData, refreshInterval);
-      return () => clearInterval(interval);
-    }
+    fetchData();
+    const interval = setInterval(fetchData, refreshInterval);
+    return () => clearInterval(interval);
   }, [refreshInterval]);
 
   return (
@@ -51,6 +67,7 @@ export default () => {
             title="Sanitized Curve"
             value="10"
             percentage={10.57}
+            data={weekWorkload}
           />
         </Col>
         <Col xs={12} className="mb-4 d-sm-none">

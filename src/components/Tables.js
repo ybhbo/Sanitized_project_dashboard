@@ -28,20 +28,20 @@ const ValueChange = ({ value, suffix }) => {
 
 export const SanitizedRecordTable = () => {
   const TableRow = (props) => {
-    const { location, date, time, sanitizedHours } = props;
+    const { location, date, time, duration } = props;
 
     return (
       <tr>
         <th scope="row">{location}</th>
         <td>{date}</td>
         <td>{time}</td>
-        <td>{sanitizedHours}</td>
+        <td>{duration}</td>
       </tr>
     );
   };
 
 
-  const [refreshInterval, setRefreshInterval] = useState(10);
+  const [refreshInterval, setRefreshInterval] = useState(30 * 1000);
   let [records, setRecords] = useState([])
 
   const fetchRecords = () => {
@@ -51,10 +51,9 @@ export const SanitizedRecordTable = () => {
   }
 
   useEffect(() => {
-    if (refreshInterval && refreshInterval > 0) {
-      const interval = setInterval(fetchRecords, refreshInterval);
-      return () => clearInterval(interval);
-    }
+    fetchRecords()
+    const interval = setInterval(fetchRecords, refreshInterval);
+    return () => clearInterval(interval);
   }, [refreshInterval]);
 
   return (
@@ -75,7 +74,7 @@ export const SanitizedRecordTable = () => {
             <th scope="col">Location</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">Sanitized Hours</th>
+            <th scope="col">Sanitized Minutes</th>
           </tr>
         </thead>
         <tbody>

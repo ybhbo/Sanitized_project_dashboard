@@ -304,7 +304,7 @@ export const ProgressTrackWidget = () => {
 // };
 
 export const WorkHoursWidget = (props) => {
-  const { title, value, percentage } = props;
+  const { title, value, percentage, data } = props;
   const percentageIcon = percentage < 0 ? faAngleDown : faAngleUp;
   const percentageColor = percentage < 0 ? "text-danger" : "text-success";
 
@@ -330,7 +330,7 @@ export const WorkHoursWidget = (props) => {
         </div>
       </Card.Header>
       <Card.Body className="p-2">
-        <WorkHoursChart />
+        <WorkHoursChart data={data} />
       </Card.Body>
     </Card>
   );

@@ -3,11 +3,9 @@ import React from "react";
 import Chartist from "react-chartist";
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
 
-export const WorkHoursChart = () => {
-  const data = {
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    series: [[0, 0, 0, 3, 3, 4, 3]]
-  };
+export const WorkHoursChart = (props) => {
+
+  const { title, data = [] } = props;
 
   const options = {
     low: 0,
