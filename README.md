@@ -1,8 +1,11 @@
+
+//Install Yarn via npm: https://classic.yarnpkg.com/en/docs/install#windows-stable
+
 1.Using Yarn 
 
 2.Make sure you have Yarn installed. 
 
-3.After installing yarn, open a terminal and run yarn install in the main volt folder to download all project dependencies. 
+3.After installing yarn, open a terminal and run yarn install in the main  folder to download all project dependencies. 
 
 `yarn install`
 

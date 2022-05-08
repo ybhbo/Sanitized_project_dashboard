@@ -66,7 +66,7 @@ export default () => (
 </React.Fragment>`}
       />
 
-      <Documentation
+      {/* <Documentation
         title="Notification badges"
         description={
           <p>You can also use the <code>&#x3C;Badge&#x3E;</code> component inside other components, such as buttons, alerts, simple paragraphs.</p>
@@ -74,7 +74,7 @@ export default () => (
         scope={{ Button, Badge }}
         imports={`import { Badge, Button } from '@themesberg/react-bootstrap';`}
         example={`<Button variant="primary">Profile <Badge bg="secondary">9</Badge></Button>`}
-      />
+      /> */}
     </Container>
   </article>
 );

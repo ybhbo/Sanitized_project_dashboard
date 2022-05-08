@@ -17,10 +17,10 @@ export const ProfileCardWidget = () => {
     <Card border="light" className="text-center p-0 mb-4">
       <div style={{ backgroundImage: `url(${ProfileCover})` }} className="profile-cover rounded-top" />
       <Card.Body className="pb-5">
-        <Card.Img src={Profile1} alt="Neil Portrait" className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" />
-        <Card.Title>Neil Sims</Card.Title>
-        <Card.Subtitle className="fw-normal">Senior Software Engineer</Card.Subtitle>
-        <Card.Text className="text-gray mb-4">New York, USA</Card.Text>
+        <Card.Img src={Profile1} alt="Baohong Portrait" className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" />
+        <Card.Title>Baohong Suen</Card.Title>
+        <Card.Subtitle className="fw-normal">Software Engineer</Card.Subtitle>
+        <Card.Text className="text-gray mb-4">California, USA</Card.Text>
 
         <Button variant="primary" size="sm" className="me-2">
           <FontAwesomeIcon icon={faUserPlus} className="me-1" /> Connect
@@ -324,10 +324,10 @@ export const WorkHoursWidget = (props) => {
             {/* </span> */}
           </small>
         </div>
-        <div className="d-flex ms-auto">
+        {/* <div className="d-flex ms-auto">
           <Button variant="secondary" size="sm" className="me-2">Month</Button>
           <Button variant="primary" size="sm" className="me-3">Week</Button>
-        </div>
+        </div> */}
       </Card.Header>
       <Card.Body className="p-2">
         <WorkHoursChart data={data} />

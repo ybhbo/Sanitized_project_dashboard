@@ -81,7 +81,7 @@ export default () => {
           <CounterWidget
             category="Total Sanitized"
             title={monthWorkload}
-            period="Feb 1 -Feb 22"
+
             percentage={18}
             icon={faChartLine}
             iconColor="shape-secondary"
@@ -92,18 +92,18 @@ export default () => {
           <CounterWidget
             category="Today Workload"
             title={todayWorkload}
-            period="Feb 22,6:00am-11:00am"
+           
             time={30}
             icon={faCashRegister}
             iconColor="shape-tertiary"
           />
         </Col>
 
-        <Col xs={12} sm={6} xl={4} className="mb-4">
+        {/* <Col xs={12} sm={6} xl={4} className="mb-4">
           <CircleChartWidget
             title="Battery Level"
             data={battery} />
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
@@ -125,7 +125,7 @@ export default () => {
               </Row>
             </Col>
 
-            <Col xs={12} xl={4}>
+            {/* <Col xs={12} xl={4}>
               <Row>
                 <Col xs={12} className="mb-4">
                   <BarChartWidget
@@ -133,7 +133,7 @@ export default () => {
                     value={452}
                     percentage={18.2}
                     data={totalOrders} />
-                </Col>
+                </Col> */}
 
                 {/* <Col xs={12} className="px-0 mb-4">
                   <RankingWidget />
@@ -142,8 +142,8 @@ export default () => {
                 {/* <Col xs={12} className="px-0">
                   <AcquisitionWidget />
                 </Col> */}
-              </Row>
-            </Col>
+              {/* </Row>
+            </Col> */}
           </Row>
         </Col>
       </Row>
