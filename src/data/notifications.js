@@ -37,7 +37,7 @@ export default [
         "id": 4,
         "read": true,
         "image": Profile4,
-        "sender": "JPrakriti Pradhan",
+        "sender": "Prakriti Pradhan",
         "time": "1 day ago",
         "link": "#",
         "message": `New message: "Hey, what's up? All set for the presentation?"`

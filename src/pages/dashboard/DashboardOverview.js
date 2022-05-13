@@ -92,18 +92,18 @@ export default () => {
           <CounterWidget
             category="Today Workload"
             title={todayWorkload}
-           
+
             time={30}
             icon={faCashRegister}
             iconColor="shape-tertiary"
           />
         </Col>
 
-        {/* <Col xs={12} sm={6} xl={4} className="mb-4">
+        <Col xs={12} sm={6} xl={4} className="mb-4">
           <CircleChartWidget
             title="Battery Level"
             data={battery} />
-        </Col> */}
+        </Col>
       </Row>
 
       <Row>
@@ -135,14 +135,14 @@ export default () => {
                     data={totalOrders} />
                 </Col> */}
 
-                {/* <Col xs={12} className="px-0 mb-4">
+            {/* <Col xs={12} className="px-0 mb-4">
                   <RankingWidget />
                 </Col> */}
 
-                {/* <Col xs={12} className="px-0">
+            {/* <Col xs={12} className="px-0">
                   <AcquisitionWidget />
                 </Col> */}
-              {/* </Row>
+            {/* </Row>
             </Col> */}
           </Row>
         </Col>
